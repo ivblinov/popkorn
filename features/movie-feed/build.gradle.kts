@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
@@ -7,15 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "io.github.ivblinov.popkorn"
+    namespace = "io.github.ivblinov.popkorn.features.movie_feed"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "io.github.ivblinov.popkorn"
         minSdk = 26
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -23,10 +19,6 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
         }
     }
     compileOptions {
@@ -43,8 +35,7 @@ android {
 
 dependencies {
 
-    implementation(project(":features:movie-feed"))
-    implementation(project(":data"))
+    implementation(project(":domain"))
 
     // core:
     implementation(libs.androidx.core.ktx)
@@ -59,7 +50,7 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
 
     // hilt:
-    implementation(libs.hilt.android)
+    implementation(libs.bundles.hilt)
     ksp(libs.hilt.compiler)
 
     // test:

@@ -21,4 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "popkorn"
 include(":app")
-include(":features:movie_feed")
+include(":features:movie-feed")
+include(":domain")
+include(":core:network")
+include(":data")
